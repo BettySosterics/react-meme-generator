@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import TestApp from './TestApp';
 
 export default function App() {
   const randomMeme = (
@@ -27,6 +28,8 @@ export default function App() {
       </button>
       {/* Show the meme on the screen */}
       {meme}
+
+      <TestApp />
     </>
   );
 }
