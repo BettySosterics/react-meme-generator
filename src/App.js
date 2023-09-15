@@ -1,14 +1,20 @@
 import { useState } from 'react';
-import TestApp from './TestApp';
 
-export default function App() {
-  const randomMeme = (
-    <img
-      src="https://api.memegen.link/images/aag/_/aliens.png"
-      alt="the meme"
-    />
-  );
-  const [meme, setMeme] = useState(randomMeme.filter);
+// import TestApp from './TestApp';
+
+export default function App(props) {
+  const templateURL = 'https://api.memegen.link/images/aag';
+  const randomMeme = <img src='templateURL'{props.id} alt="the meme" />;
+  const [meme, setMeme] = useState();
+
+  //   useEffect(() => {
+  //     fetch(templateURL)
+  //       .then((r) => r.json())
+  //       .then(setMeme);
+  //   }, []);
+
+  //   return <App meme={meme} />;
+  // };
 
   // input fields for text and generate button
 
@@ -29,7 +35,7 @@ export default function App() {
       {/* Show the meme on the screen */}
       {meme}
 
-      <TestApp />
+      {/* <TestApp /> */}
     </>
   );
 }

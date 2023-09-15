@@ -27,9 +27,25 @@ export default function TestApp() {
 
   return (
     <>
-      <div className="App">
+      {/* <div>
         {loading && <p>Loading...</p>}
         {!loading && <p>Fetched data</p>}
+  </div> */}
+      <div>
+        <form>
+          <input placeholder="your top text" />
+          <input placeholder="your bottom text" />
+        </form>
+        <button
+          onClick={() => {
+            const randomCalledMeme = data;
+            setData(randomCalledMeme);
+          }}
+        >
+          we generate your meme
+        </button>
+        {/* Show the meme on the screen */}
+        {data}
       </div>
     </>
   );
