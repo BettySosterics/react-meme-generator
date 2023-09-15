@@ -1,5 +1,5 @@
-// Import React (Mandatory Step).
-import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useState } from 'react';
 
 export default function TestApp() {
   const [inputText, setInputText] = useState({
@@ -7,7 +7,6 @@ export default function TestApp() {
     bottomText: '',
   });
   const [randomImage, setRandomImage] = useState('');
-  const [allMemeImgs, setAllMemeImgs] = useState([]);
 
   const handleChange = (event) => {
     setInputText({
@@ -17,15 +16,13 @@ export default function TestApp() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const randMemeImgUrl = allMemeImgs.url;
+    const randMemeImgUrl = allMemes;
     setRandomImage(randMemeImgUrl);
   };
 
-  useEffect(() => {
-    fetch('https://api.memegen.link/templates')
-      .then((response) => response.json()) // Parse the response to JSON
-      .then((data) => setAllMemeImgs(data)); // Set the data to allMemeImgs
-  }, []);
+  axios.get('https://api.memegen.link/templates/').then((response) => {
+    console.log(response.data[0].id);
+  });
 
   return (
     <div>
@@ -35,17 +32,19 @@ export default function TestApp() {
           value={inputText.topText}
           onChange={handleChange}
         />
+        <br />
         <input
           placeholder="your bottom text"
           value={inputText.bottomText}
           onChange={handleChange}
         />
-        <button>Generate</button>
+        <br />
+        <button>generate your meme</button>
       </form>
-      <div className="meme">
+      <div>
         <img src={randomImage} alt="" />
-        <h2 className="top">{inputText.topText}</h2>
-        <h2 className="bottom">{inputText.bottomText}</h2>
+        <h2>{inputText.topText}</h2>
+        <h2>{inputText.bottomText}</h2>
       </div>
     </div>
   );
