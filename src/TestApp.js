@@ -6,7 +6,8 @@ export default function TestApp() {
     topText: '',
     bottomText: '',
   });
-  const [randomImage, setRandomImage] = useState('');
+  // const [template, setTemplate] = useState('aag');
+  const [randomImage, setRandomImage] = useState([]);
 
   const handleChange = (event) => {
     setInputText({

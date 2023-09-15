@@ -6,6 +6,9 @@ export default function App() {
   // const id = props.id;
   // const randomMeme = templateURL + props.id;
   // const [meme, setMeme] = useState();
+  // const [memeUrl, setMemeUrl] = useState(
+  //   `https://api.memegen.link/templates/${topText}/${bottomText}.gif?width=300`,
+  // );
 
   // input fields for text and generate button
 
