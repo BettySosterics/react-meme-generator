@@ -16,8 +16,7 @@ export default function TestApp() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const randMemeImgUrl = allMemes;
-    setRandomImage(randMemeImgUrl);
+    setRandomImage('');
   };
 
   axios.get('https://api.memegen.link/templates/').then((response) => {
