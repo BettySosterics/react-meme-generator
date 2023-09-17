@@ -1,4 +1,4 @@
-export const memeTemplates = [
+export const memeTemplatesList = [
   {
     id: 'aag',
     name: 'Ancient Aliens Guy',

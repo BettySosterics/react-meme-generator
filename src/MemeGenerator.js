@@ -3,14 +3,13 @@ import { memeTemplatesList } from './MemeTemplatesList';
 
 const MemeGenerator = () => {
   const [inputText, setInputText] = useState({
-    topText: 'betty',
-    bottomText: 'codes',
+    topText: '',
+    bottomText: '',
   });
+  const [template, setTemplate] = useState('aag');
   const [randomImage, setRandomImage] = useState(
-    `https://api.memegen.link/images/buzz/${inputText.topText}/${inputText.bottomText}.png?height=450`,
+    `https://api.memegen.link/images/${template}/${inputText.topText}/${inputText.bottomText}.png?height=450`,
   );
-  const [allMemeImgs, setAllMemeImgs] = useState([]);
-  const [template, setTemplate] = useState('buzz');
 
   const handleChange = (e) => {
     setInputText({
@@ -26,13 +25,13 @@ const MemeGenerator = () => {
   //   setRandomImage(randMemeImgUrl);
   // };
 
-  function generateButton(props) {
+  function generateButton() {
     return (
       <div>
         <button
           onClick={() => {
             const url = `https://api.memegen.link/images/${template}/${inputText.topText}/${inputText.bottomText}.png?height=450`;
-            setRandomImage(url);
+            setTemplate(url);
           }}
           data-test-id="generate-meme"
         >
@@ -56,6 +55,16 @@ const MemeGenerator = () => {
         value={inputText.bottomText}
         onChange={handleChange}
       />
+      {memeTemplatesList.map((memeTemplatesList) => {
+        return (
+          <option
+            value={memeTemplatesList.id}
+            key={`template-${memeTemplatesList.id}`}
+          >
+            {memeTemplatesList.id}
+          </option>
+        );
+      })}
 
       {generateButton()}
 
